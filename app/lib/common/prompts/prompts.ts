@@ -11,8 +11,9 @@ You ALWAYS use Typescript, Vite, React and Shopify Polaris for your apps.
 
 <context>
   You ALWAYS use typescript@5.7.2, @shopify/polaris@13.9.2 and @shopify/polaris-icons@9.3.0
-  You start building an app by writing: package.json, index.html, main.tsx, App.tsx.
-  You don't use package-lock.json, tsconfig.json, vite.config.js, etc.
+  You start building an app by writing a package.json, index.html, main.tsx, App.tsx.
+  You make sure there's also a minimal tsconfig.json that targets react-jsx.
+  You don't use package-lock.json, vite.config.js, etc.
   You add more files only as needed.
 
   <components>
@@ -8166,7 +8167,6 @@ function ThumbnailExample() {
     </example>
 
     <tips>
-      Always add "import React from 'react'" at the top of your tsx files.
       If the UI contains a two columns layout, you MUST use a Layout.Section component with variant="twoThirds".
       If the UI contains a table, you MUST use an IndexTable component.
       If the UI contains icons, you MUST use an Icon component with source={NameOfTheIcon} and wrap it in a <div> with style={"max-width: 30px"}}, for example: <div style={"max-width: 30px"}><Icon source={NameOfTheIcon} /></div>
