@@ -150,41 +150,8 @@ export function getModel(
    */
   // console.log({provider,model});
 
-  const apiKey = getAPIKey(serverEnv, provider, apiKeys); // Then assign
-  const baseURL = getBaseURL(serverEnv, provider, providerSettings);
+  const apiKey = getAPIKey(serverEnv, 'OpenAILike', apiKeys); // Then assign
+  const baseURL = getBaseURL(serverEnv, 'OpenAILike', providerSettings);
 
-  // console.log({apiKey,baseURL});
-
-  switch (provider) {
-    case 'Anthropic':
-      return getAnthropicModel(apiKey, model);
-    case 'OpenAI':
-      return getOpenAIModel(apiKey, model);
-    case 'Groq':
-      return getGroqModel(apiKey, model);
-    case 'HuggingFace':
-      return getHuggingFaceModel(apiKey, model);
-    case 'OpenRouter':
-      return getOpenRouterModel(apiKey, model);
-    case 'Google':
-      return getGoogleModel(apiKey, model);
-    case 'OpenAILike':
-      return getOpenAILikeModel(baseURL, apiKey, model);
-    case 'Together':
-      return getOpenAILikeModel(baseURL, apiKey, model);
-    case 'Deepseek':
-      return getDeepseekModel(apiKey, model);
-    case 'Mistral':
-      return getMistralModel(apiKey, model);
-    case 'LMStudio':
-      return getLMStudioModel(baseURL, model);
-    case 'xAI':
-      return getXAIModel(apiKey, model);
-    case 'Cohere':
-      return getCohereAIModel(apiKey, model);
-    case 'Perplexity':
-      return getPerplexityModel(apiKey, model);
-    default:
-      return getOllamaModel(baseURL, model);
-  }
+  return getOpenAILikeModel(baseURL, apiKey, model);
 }

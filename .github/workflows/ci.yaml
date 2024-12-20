@@ -3,12 +3,12 @@ name: CI/CD
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
   test:
-    name: Test
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,11 +17,8 @@ jobs:
       - name: Setup and Build
         uses: ./.github/actions/setup-and-build
 
-      - name: Run type check
-        run: pnpm run typecheck
-
-      # - name: Run ESLint
-      #   run: pnpm run lint
-
-      - name: Run tests
-        run: pnpm run test
+      - name: Deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: pnpm run deploy
